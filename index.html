@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -114,13 +114,13 @@ button{
 
 <body>
 
-<!-- WhatsApp header -->
+<!-- WhatsApp Header -->
 <div class="header">
 💬 Chat with ❤️ <br>
 <span>last seen just now 💚</span>
 </div>
 
-<!-- Proposal -->
+<!-- Proposal Box -->
 <div class="box">
 <h1>💖 Will you be my Valentine? 💖</h1>
 <button id="yes" onclick="yesClicked()">Yes 😍</button>
@@ -134,11 +134,11 @@ button{
 const herName = "Asha";
 const myName = "Vijay ❤️";
 
-/* 🔊 Audio (cute siren) */
+/* 🔊 Siren sound */
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 function siren(){
     if(audioCtx.state!=="running") return;
-    const o=audioCtx.createOscillator();
+    const o = audioCtx.createOscillator();
     o.frequency.setValueAtTime(600,audioCtx.currentTime);
     o.frequency.linearRampToValueAtTime(900,audioCtx.currentTime+0.2);
     o.connect(audioCtx.destination);
@@ -152,23 +152,24 @@ document.addEventListener("click",()=>{
 },{once:true});
 
 /* 😈 NO button chaos */
-const noBtn=document.getElementById("no");
-const error=document.getElementById("errorMsg");
+const noBtn = document.getElementById("no");
+const error = document.getElementById("errorMsg");
 
-const roasts=[
+const roasts = [
 `${herName}, that finger slipped 😌`,
 `Nice try ${herName} 😏`,
 `System says YES only 🥰`,
 `${herName}, NO is shy 🙈`
 ];
-const memes=["🐸","😂","🥺","🤭","🫶"];
+
+const memes = ["🐸","😂","🥺","🤭","🫶"];
 
 function chaos(){
     siren();
 
-    noBtn.innerText=roasts[Math.floor(Math.random()*roasts.length)];
-    noBtn.style.left=Math.random()*(window.innerWidth-160)+"px";
-    noBtn.style.top=Math.random()*(window.innerHeight-120)+"px";
+    noBtn.innerText = roasts[Math.floor(Math.random()*roasts.length)];
+    noBtn.style.left = Math.random()*(window.innerWidth-160)+"px";
+    noBtn.style.top  = Math.random()*(window.innerHeight-120)+"px";
 
     error.style.display="block";
     setTimeout(()=>error.style.display="none",1200);
@@ -181,12 +182,12 @@ function chaos(){
     document.body.appendChild(m);
     setTimeout(()=>m.remove(),1500);
 }
-noBtn.onmouseover=chaos;
-noBtn.ontouchstart=chaos;
+noBtn.onmouseover = chaos;
+noBtn.ontouchstart = chaos;
 
 /* 💖 YES CLICK */
 function yesClicked(){
-document.body.innerHTML=`
+document.body.innerHTML = `
 <div style="
 height:100vh;
 display:flex;
@@ -199,34 +200,38 @@ padding:20px;
 ">
 <div>
 <div class="ring">💍</div>
-<h1>
-${herName} 💖<br>
-<span style="font-size:18px;">
-my drama queen 👑<br>
-mera bachha 🧸<br>
-meri kali 🌸
-</span>
-<br><br>
-❤️ Unlimited hugs<br>
-😂 Daily laughter<br>
-🥰 One very lucky Valentine<br><br>
+
+<h1 style="line-height:1.6;">
+${herName} 💖<br><br>
+
+👑 My Drama Queen<br>
+🧸 Mera Bachha<br>
+🌸 Meri Kalu Beta<br><br>
+
+❤️ Unlimited Hugs<br>
+😂 Daily Laughter<br>
+🥰 One Very Lucky Valentine<br><br>
+
 I love you forever 💖<br><br>
+
 <span style="font-size:18px;">— ${myName}</span>
 </h1>
+
 </div>
 </div>`;
 }
 
-/* 💓 Hearts */
+/* 💓 Floating hearts */
 setInterval(()=>{
-const h=document.createElement("div");
-h.className="heart";
-h.innerText="💖";
-h.style.left=Math.random()*100+"vw";
-document.body.appendChild(h);
-setTimeout(()=>h.remove(),6000);
+    const h=document.createElement("div");
+    h.className="heart";
+    h.innerText="💖";
+    h.style.left=Math.random()*100+"vw";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),6000);
 },300);
 </script>
 
 </body>
 </html>
+
