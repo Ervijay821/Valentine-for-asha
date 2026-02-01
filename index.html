@@ -74,7 +74,7 @@ button{
     z-index:20;
 }
 
-/* Meme */
+/* Meme pop */
 .meme{
     position:absolute;
     font-size:40px;
@@ -87,7 +87,7 @@ button{
     100%{transform:scale(1);opacity:0;}
 }
 
-/* Hearts */
+/* Floating hearts */
 .heart{
     position:absolute;
     bottom:-20px;
@@ -99,7 +99,7 @@ button{
     100%{transform:translateY(-120vh);opacity:0;}
 }
 
-/* Ring */
+/* Ring animation */
 .ring{
     font-size:60px;
     animation:ringPop 1.5s ease forwards;
@@ -114,11 +114,13 @@ button{
 
 <body>
 
+<!-- WhatsApp header -->
 <div class="header">
 💬 Chat with ❤️ <br>
 <span>last seen just now 💚</span>
 </div>
 
+<!-- Proposal -->
 <div class="box">
 <h1>💖 Will you be my Valentine? 💖</h1>
 <button id="yes" onclick="yesClicked()">Yes 😍</button>
@@ -132,7 +134,7 @@ button{
 const herName = "Asha";
 const myName = "Vijay ❤️";
 
-/* 🔊 Audio */
+/* 🔊 Audio (cute siren) */
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 function siren(){
     if(audioCtx.state!=="running") return;
@@ -140,15 +142,16 @@ function siren(){
     o.frequency.setValueAtTime(600,audioCtx.currentTime);
     o.frequency.linearRampToValueAtTime(900,audioCtx.currentTime+0.2);
     o.connect(audioCtx.destination);
-    o.start(); o.stop(audioCtx.currentTime+0.25);
+    o.start();
+    o.stop(audioCtx.currentTime+0.25);
 }
 
-/* 🔓 Unlock audio */
+/* 🔓 Unlock audio on first tap */
 document.addEventListener("click",()=>{
     if(audioCtx.state==="suspended") audioCtx.resume();
 },{once:true});
 
-/* 😈 NO button */
+/* 😈 NO button chaos */
 const noBtn=document.getElementById("no");
 const error=document.getElementById("errorMsg");
 
@@ -162,6 +165,7 @@ const memes=["🐸","😂","🥺","🤭","🫶"];
 
 function chaos(){
     siren();
+
     noBtn.innerText=roasts[Math.floor(Math.random()*roasts.length)];
     noBtn.style.left=Math.random()*(window.innerWidth-160)+"px";
     noBtn.style.top=Math.random()*(window.innerHeight-120)+"px";
@@ -180,19 +184,33 @@ function chaos(){
 noBtn.onmouseover=chaos;
 noBtn.ontouchstart=chaos;
 
-/* 💖 YES */
+/* 💖 YES CLICK */
 function yesClicked(){
 document.body.innerHTML=`
-<div style="height:100vh;display:flex;justify-content:center;align-items:center;
-background:linear-gradient(135deg,#ff9a9e,#fad0c4);color:white;text-align:center;">
+<div style="
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+color:white;
+text-align:center;
+padding:20px;
+">
 <div>
 <div class="ring">💍</div>
 <h1>
-${herName}, you just unlocked:<br><br>
+${herName} 💖<br>
+<span style="font-size:18px;">
+my drama queen 👑<br>
+mera bachha 🧸<br>
+meri kali 🌸
+</span>
+<br><br>
 ❤️ Unlimited hugs<br>
 😂 Daily laughter<br>
 🥰 One very lucky Valentine<br><br>
-I love you 💖<br><br>
+I love you forever 💖<br><br>
 <span style="font-size:18px;">— ${myName}</span>
 </h1>
 </div>
